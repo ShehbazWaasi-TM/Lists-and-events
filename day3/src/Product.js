@@ -1,8 +1,21 @@
-import React from 'react'
-
+import React from 'react';
+import productsdata from './products.json';
 
 const Product = (props) => {
-    console.log(props.products)
+    // console.log(props.products)
+    const filteredData = productsdata.filter((el)=> {
+        console.log(el)
+        if (props.title === "" && props.category===""){
+            return el;
+        }
+        if(props.title!==""){
+            return (el.title.toLowerCase().includes(props.title))
+        }
+        if(props.category!==""){
+            return el.category.toLowerCase().includes(props.category)
+        }
+        return filteredData
+    })
   return (
     <>
         <table border={1} className="table-content">
@@ -16,7 +29,7 @@ const Product = (props) => {
                 </tr>
             </thead>
             <tbody>
-                {props.products.map((product)=>(
+                {filteredData.map((product)=>(
                     <tr key={product.id}>
                         <td>{product.id}</td>
                         <td>{product.title}</td>
