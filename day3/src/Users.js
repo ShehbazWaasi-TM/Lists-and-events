@@ -7,14 +7,14 @@ const Users = () => {
     let names = data.map(item => item.username)
     console.log(names)
   return (
-    <>
+    <div>
     <ol key={data.id}>
         {names.map((name,index)=>
             <li>{name}</li>
         )}
     </ol>
     <User data={data}/>
-    </>
+    </div>
   )
 }
 
