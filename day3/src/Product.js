@@ -16,6 +16,10 @@ const Product = (props) => {
         }
         return filteredData
     })
+    console.log(filteredData)
+    const submitevent = ()=>{
+        filteredData.map((x)=>(console.log(x.title)))
+    }
   return (
     <>
         <table border={1} className="table-content">
@@ -41,6 +45,7 @@ const Product = (props) => {
 
             </tbody>
         </table>
+        <button className='btn' onClick={submitevent}>Submit</button>
     </>
   )
 }
