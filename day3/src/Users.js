@@ -1,4 +1,5 @@
 import React from 'react'
+import User from './User'
 import data from "./users.json"
 
 const Users = () => {
@@ -7,11 +8,12 @@ const Users = () => {
     console.log(names)
   return (
     <>
-    <ol>
+    <ol key={data.id}>
         {names.map((name,index)=>
             <li>{name}</li>
         )}
     </ol>
+    <User data={data}/>
     </>
   )
 }
