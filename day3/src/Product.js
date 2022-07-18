@@ -6,32 +6,38 @@ const Product = ({title='',category=''}) => {
     // const [sortdata,setSortdata] = useState()
  
     // // console.log("sortdata" , sortdata)
-    // const [filteredRes, setFilteredRes] = useEffect()
-    const filteredData = productsdata.filter((el)=> {
-        if(title!==""){
-            return (el.title.toLowerCase().includes(title))
-        }
-        if(category!==""){
-            return (el.category.toLowerCase().includes(category))
-        }
-        return el;
-    })
-    // setFilteredRes(filteredData)
-    const [tableData, setTableData] = useState(filteredData)
-    console.log("filtereddata", filteredData)
+    // const [filteredRes, setFilteredRes] = useEffect();
+    const [tableData, setTableData] = useState([]);
+    console.log("title",title);
+    console.log('category',category);
+   
+   
     useEffect(()=>{
-        setTableData(filteredData)
-    },[])
+        const filteredData = productsdata.filter((el)=> {
+            if(title!==""){
+                return (el.title.toLowerCase().includes(title))
+            }
+            if(category!==""){
+                return (el.category.toLowerCase().includes(category))
+            }
+            return el;
+        })
+        // setFilteredRes(filteredData)
+     
+        console.log("filtereddata", filteredData);
+        setTableData(filteredData);
+    },[title,category])
     //sortedtitle
+    
     const sortedtitle =() =>{
         // setToggle(true)
-        const sortproduct = [...filteredData].sort((a,b)=>(a.title<b.title?-1:1))
+        const sortproduct = [...tableData].sort((a,b)=>(a.title<b.title?-1:1))
         console.log("sortedproduct " , sortproduct)
         // setsortdata(sortproduct);
         setTableData(sortproduct);
     }
     const submitevent = ()=>{
-        filteredData.map((x)=>(console.log(x.title)))
+        tableData.map((x)=>(console.log(x.title)))
     }      
   return (
     <>
