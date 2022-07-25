@@ -36,6 +36,11 @@ const Product = ({title='',category=''}) => {
         // setsortdata(sortproduct);
         setTableData(sortproduct);
     }
+    const sortTitleDes = () =>{
+        const sortproduct = [...tableData].sort((a,b)=>(a.title>b.title?-1:1))
+        console.log("descending sorted", sortproduct)
+        setTableData(sortproduct)
+    }
     const submitevent = ()=>{
         tableData.map((x)=>(console.log(x.title)))
     }      
@@ -46,7 +51,8 @@ const Product = ({title='',category=''}) => {
                 <tr>
                     <th>S.No</th>
                     <th>title
-                    <button onClick={sortedtitle}>Sort title</button>
+                    <button onClick={sortedtitle}>⬆️</button>
+                    <button onClick={sortTitleDes}>⬇️</button>
                     </th>
                     <th>category</th>
                     <th>price</th>
